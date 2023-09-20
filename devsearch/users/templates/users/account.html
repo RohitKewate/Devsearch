@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Main Section -->
+<main class="settingsPage profile my-md">
+  <div class="container">
+    <div class="layout">
+      <div class="column column--1of3">
+        <div class="card text-center">
+          <div class="card__body dev">
+            <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-account-page' %}">
+              <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m11.25 6c.398 0 .75.352.75.75 0 .414-.336.75-.75.75-1.505 0-7.75 0-7.75 0v12h17v-8.75c0-.414.336-.75.75-.75s.75.336.75.75v9.25c0 .621-.522 1-1 1h-18c-.48 0-1-.379-1-1v-13c0-.481.38-1 1-1zm-2.011 6.526c-1.045 3.003-1.238 3.45-1.238 3.84 0 .441.385.626.627.626.272 0 1.108-.301 3.829-1.249zm.888-.889 3.22 3.22 8.408-8.4c.163-.163.245-.377.245-.592 0-.213-.082-.427-.245-.591-.58-.578-1.458-1.457-2.039-2.036-.163-.163-.377-.245-.591-.245-.213 0-.428.082-.592.245z" fill-rule="nonzero"/></svg>
+              Edit</a>
+              {% if profile.profile_image == None %}
+              <img class="avatar avatar--xl dev__avatar" src="{% static 'images\avatar.svg' %}"/>
+              {% else %}
+              <img class="avatar avatar--xl dev__avatar" src="{{profile.imageURL}}"/>
+              {% endif %}
+            
+            <h2 class="dev__name">{{profile.name}}</h2>
+            <p class="dev__title">{{profile.short_into}}</p>
+            <p class="dev__location">Based in {{profile.location}}</p>
+
+            <ul class="dev__social">
+              {% if profile.social_github %}
+              <li>
+                <a title="Github" href="{{ user.social_github }}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_stackoverflow %}
+              <li>
+                <a title="Stackoverflow" href="{{ user.social_stackoverflow }}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 21h-10v-2h10v2zm6-11.665l-1.621-9.335-1.993.346 1.62 9.335 1.994-.346zm-5.964 6.937l-9.746-.975-.186 2.016 9.755.879.177-1.92zm.538-2.587l-9.276-2.608-.526 1.954 9.306 2.5.496-1.846zm1.204-2.413l-8.297-4.864-1.029 1.743 8.298 4.865 1.028-1.744zm1.866-1.467l-5.339-7.829-1.672 1.14 5.339 7.829 1.672-1.14zm-2.644 4.195v8h-12v-8h-2v10h16v-10h-2z"/></svg>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if profile.social_twitter %}
+              <li>
+                <a title="Twitter" href="{{ user.social_twitter }}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_linkdein %}
+              <li>
+                <a title="Linkdein" href="{{ user.social_linkdein }}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 21h-10v-2h10v2zm6-11.665l-1.621-9.335-1.993.346 1.62 9.335 1.994-.346zm-5.964 6.937l-9.746-.975-.186 2.016 9.755.879.177-1.92zm.538-2.587l-9.276-2.608-.526 1.954 9.306 2.5.496-1.846zm1.204-2.413l-8.297-4.864-1.029 1.743 8.298 4.865 1.028-1.744zm1.866-1.467l-5.339-7.829-1.672 1.14 5.339 7.829 1.672-1.14zm-2.644 4.195v8h-12v-8h-2v10h16v-10h-2z"/></svg>
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_website %}
+              <li>
+                <a title="Personal website" href="{{ user.social_website }}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 21h-10v-2h10v2zm6-11.665l-1.621-9.335-1.993.346 1.62 9.335 1.994-.346zm-5.964 6.937l-9.746-.975-.186 2.016 9.755.879.177-1.92zm.538-2.587l-9.276-2.608-.526 1.954 9.306 2.5.496-1.846zm1.204-2.413l-8.297-4.864-1.029 1.743 8.298 4.865 1.028-1.744zm1.866-1.467l-5.339-7.829-1.672 1.14 5.339 7.829 1.672-1.14zm-2.644 4.195v8h-12v-8h-2v10h16v-10h-2z"/></svg>
+                </a>
+              </li>
+              {% endif %}
+
+            </ul>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="column column--2of3">
+        <div class="devInfo">
+          <h3 class="devInfo__title">About Me</h3>
+          <p class="devInfo__about">{{profile.bio}}</p>
+        </div>
+        <div class="settings">
+          <h3 class="settings__title">Skills</h3>
+          <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'add-skill-page' %}"><i
+              class="im im-plus"></i> Add Skill</a>
+        </div>
+
+        <table class="settings__table">
+          {% for skill in skills %}
+          <tr>
+            <td class="settings__tableInfo">
+              <h4>{{skill.name}}</h4>
+              <p>
+                {{skill.description}}
+              </p>
+            </td>
+            <td class="settings__tableActions">
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-skill-page' skill.id %}"><i
+                  class="im im-edit"></i> Edit</a>
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-skill-page' skill.id %}"><i
+                  class="im im-x-mark-circle-o"></i>
+                Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+
+        <div class="settings">
+          <h3 class="settings__title">Projects</h3>
+          <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-project-page' %}"><i
+              class="im im-plus"></i> Add Project</a>
+        </div>
+
+        <table class="settings__table">
+          {% for project in projects %}
+          <tr>
+            <td class="settings__thumbnail">
+              <a href="{% url 'single-project-page' project.id %}"><img src="{{project.imageURL}}" alt="Project Thumbnail" /></a>
+            </td>
+            <td class="settings__tableInfo">
+              <a href="{% url 'single-project-page' project.id %}">{{project.title}}</a>
+              <p>{{project.description|slice:"150"}}</p>
+            </td>
+            <td class="settings__tableActions">
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-project-page' project.id %}"><i
+                  class="im im-edit"></i> Edit</a>
+              <a class="tag tag--pill tag--main settings__btn"
+                href="{% url 'delete-project-page'  project.id %}?next=/account"><i class="im im-x-mark-circle-o"></i>
+                Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock content %}

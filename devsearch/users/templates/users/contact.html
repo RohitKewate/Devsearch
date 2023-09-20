@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- Main Section -->
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <h2>Contact Us</h2>
+            <p>Have a project in mind or need assistance? Reach out to us.</p>
+            <br>
+
+            <form class="form" method="POST">
+                {% csrf_token %}
+                <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="formInput#text">Name: </label>
+                    <input class="input input--text" id="formInput#text" type="text" name="name" required
+                        placeholder="Enter your name" />
+                </div>
+
+                <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="formInput#text">Email: </label>
+                    <input class="input input--text" id="formInput#text" type="email" name="email" required
+                        placeholder="Enter your email" />
+                </div>
+
+                <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="formInput#text">Subject: </label>
+                    <input class="input input--text" id="formInput#text" type="text"  name="subject" required
+                        placeholder="Enter your Subject" />
+                </div>
+
+                 <!-- Input:Text -->
+                 <div class="form__field">
+                    <label for="formInput#text">Message: </label>
+                    <textarea class="input input--text" id="formInput#text" type="text" name="message" required
+                        placeholder="Enter your Message" ></textarea>
+                </div>
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</main>
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+

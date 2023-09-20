@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+        
+    p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    }
+    
+    
+    section {
+    padding: 50px;
+    text-align: center;
+    }
+    
+    h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    }
+
+</style>
+
+<section id="thankyou">
+    <h2>Thank You!</h2>
+    <p>Your message has been successfully submitted.</p>
+    <p>We appreciate your interest and will get back to you shortly.</p>
+    <a href="{% url 'home-page' %}" class="cta-button">Back to Home</a>
+  </section>
+
+
+{% endblock content %}
